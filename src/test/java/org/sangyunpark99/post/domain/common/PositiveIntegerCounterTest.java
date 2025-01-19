@@ -1,4 +1,4 @@
-package org.sangyunpark99;
+package org.sangyunpark99.post.domain.common;
 
 import org.junit.jupiter.api.Test;
 import org.sangyunpark99.post.domain.common.PositiveIntegerCounter;
@@ -33,14 +33,11 @@ public class PositiveIntegerCounterTest {
     }
 
     @Test
-    void givenCreated_whenDecrease_thenCountIsZero() throws Exception{
+    void givenCreated_whenDecrease_thenThrowException() throws Exception{
         //given
         PositiveIntegerCounter counter = new PositiveIntegerCounter();
 
-        //when
-        counter.decrease();
-
-        //then
-        assertEquals(0, counter.getCount());
+        //when, then
+        assertThrows(IllegalArgumentException.class, () -> counter.decrease());
     }
 }

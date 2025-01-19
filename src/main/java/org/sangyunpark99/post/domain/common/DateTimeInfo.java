@@ -2,12 +2,12 @@ package org.sangyunpark99.post.domain.common;
 
 import java.time.LocalDateTime;
 
-public class ModificationInfo {
+public class DateTimeInfo {
 
     private boolean isModified;
     private LocalDateTime dateTime;
 
-    public ModificationInfo() {
+    public DateTimeInfo() {
         isModified = false;
         dateTime = LocalDateTime.now();
     }
@@ -16,8 +16,12 @@ public class ModificationInfo {
         return isModified;
     }
 
-    public void modify() {
+    public void updateEditDateTime() {
         isModified = true;
         this.dateTime = LocalDateTime.now();
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 }

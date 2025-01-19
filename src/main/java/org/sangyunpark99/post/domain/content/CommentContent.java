@@ -1,6 +1,4 @@
-package org.sangyunpark99.post.domain.comment;
-
-import org.sangyunpark99.post.domain.content.Content;
+package org.sangyunpark99.post.domain.content;
 
 public class CommentContent extends Content {
 

@@ -1,6 +1,4 @@
-package org.sangyunpark99.post.domain;
-
-import org.sangyunpark99.post.domain.content.Content;
+package org.sangyunpark99.post.domain.content;
 
 public class PostContent extends Content {
 

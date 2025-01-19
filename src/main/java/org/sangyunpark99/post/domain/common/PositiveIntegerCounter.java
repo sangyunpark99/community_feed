@@ -1,4 +1,4 @@
-package org.sangyunpark99.common.domain;
+package org.sangyunpark99.post.domain.common;
 
 public class PositiveIntegerCounter {
     private int count;
@@ -12,8 +12,8 @@ public class PositiveIntegerCounter {
     }
 
     public void decrease() {
-        if(count < 0) {
-            return;
+        if(count < 1) {
+            throw new IllegalArgumentException();
         }
         this.count--;
     }

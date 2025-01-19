@@ -13,6 +13,10 @@ public class Comment {
     private final CommentContent content;
     private final Like likeManager;
 
+    public static Comment createComment(Post post, User user, String content) {
+        return new Comment(null, new CommentContent(content), post, user);
+    }
+
     public Comment(Long id, CommentContent content, Post post, User author) {
 
         if(author == null) {
@@ -34,8 +38,30 @@ public class Comment {
         this.likeManager = new Like();
     }
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public CommentContent getCommentContent() {
+        return content;
+    }
+
     public void like(User user) {
-        likeManager.like(user, author);
+
+        if(this.author.equals(user)) {
+            throw new IllegalArgumentException();
+        }
+
+        likeManager.like();
     }
 
     public void unlike() {
@@ -44,5 +70,17 @@ public class Comment {
 
     public int getLikeCount() {
         return likeManager.getCount();
+    }
+
+    public void updateComment(User user, String updatedContent) {
+        if(!this.author.equals(user)) {
+            throw new IllegalArgumentException();
+        }
+
+        this.content.updateContent(updatedContent);
+    }
+
+    public String getContent() {
+        return content.getContentText();
     }
 }

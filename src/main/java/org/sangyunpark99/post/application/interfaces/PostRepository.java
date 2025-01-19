@@ -1,2 +1,12 @@
-package org.sangyunpark99.post.application.interfaces;public interface PostRepository {
+package org.sangyunpark99.post.application.interfaces;
+
+import org.sangyunpark99.post.domain.Post;
+
+import java.util.Optional;
+
+public interface PostRepository {
+
+    Post save(Post post);
+
+    Optional<Post> findById(Long id);
 }

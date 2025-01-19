@@ -1,4 +1,4 @@
-package org.sangyunpark99.common;
+package org.sangyunpark99.common.domain;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

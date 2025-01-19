@@ -1,7 +1,4 @@
-package org.sangyunpark99.post.domain.like;
-
-import org.sangyunpark99.common.domain.PositiveIntegerCounter;
-import org.sangyunpark99.user.domain.User;
+package org.sangyunpark99.post.domain.common;
 
 public class Like {
 
@@ -11,11 +8,7 @@ public class Like {
         this.counter = new PositiveIntegerCounter();
     }
 
-    public void like(User user, User author) {
-        if(user.equals(author)) {
-            throw new IllegalArgumentException();
-        }
-
+    public void like() {
         counter.increase();
     }
 
