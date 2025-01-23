@@ -18,4 +18,8 @@ public class UserInfo { // VO 사용
     public String getName() {
         return name;
     }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
 }

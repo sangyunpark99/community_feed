@@ -1,15 +1,22 @@
 package org.sangyunpark99.user.domain;
 
-import org.sangyunpark99.post.domain.common.PositiveIntegerCounter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import org.sangyunpark99.common.domain.PositiveIntegerCounter;
 
 import java.util.Objects;
 
+@Builder
+@AllArgsConstructor
 public class User {
 
-    private final Long id;
-    private final UserInfo info;
-    private final PositiveIntegerCounter followingCount;
-    private final PositiveIntegerCounter followerCount;
+    private Long id;
+
+    private UserInfo info;
+
+    private PositiveIntegerCounter followingCount;
+
+    private PositiveIntegerCounter followerCount;
 
     public User(Long id, UserInfo userInfo) {
 
@@ -31,8 +38,16 @@ public class User {
         return info;
     }
 
+    public String getName() {
+        return info.getName();
+    }
+
     public int getFollowingCount() {
         return followingCount.getCount();
+    }
+
+    public String getProfileImageUrl() {
+        return info.getProfileImageUrl();
     }
 
     public int getFollowerCount() {

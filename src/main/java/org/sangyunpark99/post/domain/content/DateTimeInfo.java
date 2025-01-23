@@ -1,4 +1,4 @@
-package org.sangyunpark99.post.domain.common;
+package org.sangyunpark99.post.domain.content;
 
 import java.time.LocalDateTime;
 

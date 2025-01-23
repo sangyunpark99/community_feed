@@ -1,15 +1,22 @@
 package org.sangyunpark99.post.domain.comment;
 
-import org.sangyunpark99.post.domain.common.Like;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import org.sangyunpark99.post.domain.Like;
 import org.sangyunpark99.post.domain.Post;
 import org.sangyunpark99.post.domain.content.CommentContent;
 import org.sangyunpark99.user.domain.User;
 
+@Builder
+@AllArgsConstructor
 public class Comment {
 
     private final Long id;
+
     private final Post post;
+
     private final User author;
+
     private final CommentContent content;
     private final Like likeManager;
 
@@ -37,7 +44,6 @@ public class Comment {
         this.content = content;
         this.likeManager = new Like();
     }
-
 
     public Long getId() {
         return id;

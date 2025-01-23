@@ -1,7 +1,7 @@
 package org.sangyunpark99.post.domain.common;
 
 import org.junit.jupiter.api.Test;
-import org.sangyunpark99.post.domain.common.PositiveIntegerCounter;
+import org.sangyunpark99.common.domain.PositiveIntegerCounter;
 
 import static org.junit.jupiter.api.Assertions.*;
 

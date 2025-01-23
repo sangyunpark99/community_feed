@@ -1,17 +1,20 @@
 package org.sangyunpark99.post.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import org.sangyunpark99.post.domain.content.Content;
-import org.sangyunpark99.post.domain.common.Like;
 import org.sangyunpark99.post.domain.content.PostContent;
 import org.sangyunpark99.post.domain.content.PostState;
 import org.sangyunpark99.user.domain.User;
 
+@Builder
+@AllArgsConstructor
 public class Post {
 
     private final Long id;
     private final User author;
     private final Content content;
-    private final Like likeManager;
+    private final Like likeCount;
     private PostState state;
 
     public static Post createPost(Long id, User author, String text, PostState state) {
@@ -34,7 +37,7 @@ public class Post {
         this.id = id;
         this.author = author;
         this.content = content;
-        this.likeManager = new Like();
+        this.likeCount = new Like();
         this.state = state;
     }
 
@@ -43,15 +46,15 @@ public class Post {
             throw new IllegalArgumentException();
         }
 
-        likeManager.like();
+        likeCount.like();
     }
 
     public void unlike() {
-        likeManager.unlike();
+        likeCount.unlike();
     }
 
     public int getLikeCount() {
-        return likeManager.getCount();
+        return likeCount.getCount();
     }
 
     public Content getContent() {

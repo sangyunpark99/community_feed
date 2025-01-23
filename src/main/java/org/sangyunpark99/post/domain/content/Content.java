@@ -1,7 +1,5 @@
 package org.sangyunpark99.post.domain.content;
 
-import org.sangyunpark99.post.domain.common.DateTimeInfo;
-
 public abstract class Content {
 
     private String contentText;
