@@ -11,8 +11,8 @@ import org.sangyunpark99.common.repository.entity.TimeBaseEntity;
 public class UserRelationshipEntity extends TimeBaseEntity {
 
     @Id
-    private Long followingUserId;
+    private Long followingUserId; // 어떤 아이디를 팔로잉 하나요
 
     @Id
-    private Long followerUserId;
+    private Long followerUserId; // 전 팔로워 유저 입니다.
 }
