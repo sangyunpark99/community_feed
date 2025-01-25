@@ -2,7 +2,7 @@ package org.sangyunpark99.user.application;
 
 import org.junit.jupiter.api.Test;
 import org.sangyunpark99.fake.FakeObjectFactory;
-import org.sangyunpark99.user.application.dto.CreateUserRequestDto;
+import org.sangyunpark99.user.application.dto.request.CreateUserRequestDto;
 import org.sangyunpark99.user.domain.User;
 import org.sangyunpark99.user.domain.UserInfo;
 

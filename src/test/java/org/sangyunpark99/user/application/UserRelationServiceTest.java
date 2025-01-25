@@ -2,8 +2,8 @@ package org.sangyunpark99.user.application;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.sangyunpark99.user.application.dto.CreateUserRequestDto;
-import org.sangyunpark99.user.application.dto.FollowUserRequestDto;
+import org.sangyunpark99.user.application.dto.request.CreateUserRequestDto;
+import org.sangyunpark99.user.application.dto.response.FollowUserRequestDto;
 import org.sangyunpark99.user.domain.User;
 
 import static org.junit.jupiter.api.Assertions.*;

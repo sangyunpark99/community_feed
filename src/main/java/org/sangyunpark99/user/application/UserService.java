@@ -1,17 +1,18 @@
 package org.sangyunpark99.user.application;
 
-import org.sangyunpark99.user.application.dto.CreateUserRequestDto;
-import org.sangyunpark99.user.application.interfaces.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.sangyunpark99.user.application.dto.request.CreateUserRequestDto;
+import org.sangyunpark99.user.application.dto.response.GetUserResponseDto;
 import org.sangyunpark99.user.domain.User;
 import org.sangyunpark99.user.domain.UserInfo;
+import org.sangyunpark99.user.repository.UserRepositoryImpl;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final UserRepositoryImpl userRepository;
 
     public User createUser(CreateUserRequestDto dto) {
         UserInfo userInfo = new UserInfo(dto.name(), dto.profileImageUrl());
@@ -22,5 +23,11 @@ public class UserService {
 
     public User getUser(final Long id) {
         return userRepository.findById(id);
+    }
+
+    public GetUserResponseDto getUserProfile(Long id) {
+        User user= getUser(id);
+
+        return new GetUserResponseDto(user);
     }
 }

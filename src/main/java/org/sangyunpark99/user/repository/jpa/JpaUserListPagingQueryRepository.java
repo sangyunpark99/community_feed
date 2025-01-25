@@ -4,7 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.sangyunpark99.user.application.dto.GetUserListResponseDto;
+import org.sangyunpark99.user.application.dto.response.GetUserListResponseDto;
 import org.sangyunpark99.user.repository.entity.QUserEntity;
 import org.sangyunpark99.user.repository.entity.QUserRelationshipEntity;
 import org.springframework.stereotype.Repository;

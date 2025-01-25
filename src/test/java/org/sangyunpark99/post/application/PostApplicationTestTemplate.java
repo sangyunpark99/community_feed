@@ -6,7 +6,7 @@ import org.sangyunpark99.post.application.dto.CreatePostRequestDto;
 import org.sangyunpark99.post.domain.Post;
 import org.sangyunpark99.post.domain.content.PostState;
 import org.sangyunpark99.user.application.UserService;
-import org.sangyunpark99.user.application.dto.CreateUserRequestDto;
+import org.sangyunpark99.user.application.dto.request.CreateUserRequestDto;
 import org.sangyunpark99.user.domain.User;
 
 public class PostApplicationTestTemplate {

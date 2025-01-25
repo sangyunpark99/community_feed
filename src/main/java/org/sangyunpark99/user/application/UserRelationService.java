@@ -1,17 +1,16 @@
 package org.sangyunpark99.user.application;
 
-import org.sangyunpark99.user.application.dto.FollowUserRequestDto;
-import org.sangyunpark99.user.application.interfaces.UserRelationRepository;
+import lombok.RequiredArgsConstructor;
+import org.sangyunpark99.user.application.dto.response.FollowUserRequestDto;
 import org.sangyunpark99.user.domain.User;
+import org.sangyunpark99.user.repository.UserRelationRepositoryImpl;
+import org.springframework.stereotype.Service;
 
+@Service
+@RequiredArgsConstructor
 public class UserRelationService {
     private final UserService userService;
-    private final UserRelationRepository userRelationRepository;
-
-    public UserRelationService(UserService userService, UserRelationRepository repository) {
-        this.userService = userService;
-        this.userRelationRepository = repository;
-    }
+    private final UserRelationRepositoryImpl userRelationRepository;
 
     public void follow(FollowUserRequestDto dto) {
         User user = userService.getUser(dto.userId());
@@ -21,7 +20,7 @@ public class UserRelationService {
             throw new IllegalArgumentException();
         }
 
-        user.follow(targetUser);
+        user.follow(targetUser); // 업데이트
         userRelationRepository.save(user, targetUser);
     }
 
