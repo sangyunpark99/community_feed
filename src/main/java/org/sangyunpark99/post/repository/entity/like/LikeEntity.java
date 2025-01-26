@@ -1,6 +1,7 @@
 package org.sangyunpark99.post.repository.entity.like;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.sangyunpark99.common.repository.entity.TimeBaseEntity;
 import org.sangyunpark99.post.domain.Post;
@@ -10,6 +11,7 @@ import org.sangyunpark99.user.domain.User;
 @Entity
 @Table(name = "community_like")
 @NoArgsConstructor
+@Getter
 public class LikeEntity extends TimeBaseEntity {
 
     @EmbeddedId

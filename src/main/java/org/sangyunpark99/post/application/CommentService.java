@@ -1,7 +1,7 @@
 package org.sangyunpark99.post.application;
 
 import org.sangyunpark99.post.application.dto.CreateCommentRequestDto;
-import org.sangyunpark99.post.application.dto.LikeCommentRequestDtp;
+import org.sangyunpark99.post.application.dto.LikeCommentRequestDto;
 import org.sangyunpark99.post.application.dto.UpdateCommentRequestDto;
 import org.sangyunpark99.post.application.interfaces.CommentRepository;
 import org.sangyunpark99.post.application.interfaces.LikeRepository;
@@ -9,7 +9,10 @@ import org.sangyunpark99.post.domain.Post;
 import org.sangyunpark99.post.domain.comment.Comment;
 import org.sangyunpark99.user.application.UserService;
 import org.sangyunpark99.user.domain.User;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class CommentService {
 
     private final CommentRepository commentRepository;
@@ -26,26 +29,29 @@ public class CommentService {
     }
 
     public Comment getComments(Long id) {
-        return commentRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        return commentRepository.findById(id);
     }
 
+    @Transactional
     public Comment createComment(CreateCommentRequestDto dto) {
-        Post post = postService.get(dto.postId());
+        Post post = postService.getPost(dto.postId());
         User user = userService.getUser(dto.userId());
         Comment comment = Comment.createComment(post, user, dto.content());
        return commentRepository.save(comment);
     }
 
-    public Comment updateComment(UpdateCommentRequestDto dto) {
+    @Transactional
+    public Comment updateComment(Long commentId, UpdateCommentRequestDto dto) {
         User user = userService.getUser(dto.userId());
-        Comment comment = commentRepository.findById(dto.commentId()).orElseThrow(IllegalArgumentException::new);
+        Comment comment = commentRepository.findById(commentId);
         comment.updateComment(user,dto.content());
 
         return commentRepository.save(comment);
     }
 
-    public void likeComment(LikeCommentRequestDtp dto) {
-        Comment comment = commentRepository.findById(dto.commentId()).orElseThrow(IllegalArgumentException::new);
+    @Transactional
+    public void likeComment(LikeCommentRequestDto dto) {
+        Comment comment = commentRepository.findById(dto.commentId());
         User user = userService.getUser(dto.userId());
 
         if(likeRepository.checkLike(comment, user)) {
@@ -56,8 +62,9 @@ public class CommentService {
         likeRepository.like(comment, user);
     }
 
-    public void unlikeComment(LikeCommentRequestDtp dto) {
-        Comment comment = commentRepository.findById(dto.commentId()).orElseThrow(IllegalArgumentException::new);
+    @Transactional
+    public void unlikeComment(LikeCommentRequestDto dto) {
+        Comment comment = commentRepository.findById(dto.commentId());
         User user = userService.getUser(dto.userId());
 
         if(!likeRepository.checkLike(comment, user)) {

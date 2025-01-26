@@ -5,7 +5,7 @@ import org.sangyunpark99.common.ui.Response;
 import org.sangyunpark99.user.application.UserService;
 import org.sangyunpark99.user.application.dto.request.CreateUserRequestDto;
 import org.sangyunpark99.user.application.dto.response.GetUserListResponseDto;
-import org.sangyunpark99.user.application.dto.response.GetUserResponseDto;
+import org.sangyunpark99.user.application. dto.response.GetUserResponseDto;
 import org.sangyunpark99.user.domain.User;
 import org.sangyunpark99.user.repository.jpa.JpaUserListQueryRepository;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,9 @@
 package org.sangyunpark99.post.repository.entity.comment;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.sangyunpark99.common.repository.entity.TimeBaseEntity;
 import org.sangyunpark99.post.domain.Like;
 import org.sangyunpark99.post.domain.comment.Comment;
 import org.sangyunpark99.post.domain.content.CommentContent;
@@ -11,7 +13,8 @@ import org.sangyunpark99.user.repository.entity.UserEntity;
 @Entity
 @Table(name="community_comment")
 @NoArgsConstructor
-public class CommentEntity {
+@Getter
+public class CommentEntity extends TimeBaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,8 +34,9 @@ public class CommentEntity {
     public CommentEntity(Comment comment) {
         this.id = comment.getId();
         this.likeCount = comment.getLikeCount();
+        this.content = comment.getContent();
         this.post = new PostEntity(comment.getPost());
-        this.user = user;
+        this.user = new UserEntity(comment.getAuthor());
     }
 
     public Comment toComment() {

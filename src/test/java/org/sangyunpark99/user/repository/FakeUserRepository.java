@@ -5,7 +5,6 @@ import org.sangyunpark99.user.domain.User;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class FakeUserRepository implements UserRepository {
 

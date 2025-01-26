@@ -5,9 +5,9 @@ import org.sangyunpark99.post.application.PostService;
 import org.sangyunpark99.post.application.interfaces.CommentRepository;
 import org.sangyunpark99.post.application.interfaces.LikeRepository;
 import org.sangyunpark99.post.application.interfaces.PostRepository;
-import org.sangyunpark99.post.domain.repository.FakeCommentRepository;
-import org.sangyunpark99.post.domain.repository.FakeLikeRepository;
-import org.sangyunpark99.post.domain.repository.FakePostRepository;
+import org.sangyunpark99.post.repository.FakeCommentRepository;
+import org.sangyunpark99.post.repository.FakeLikeRepository;
+import org.sangyunpark99.post.repository.FakePostRepository;
 import org.sangyunpark99.user.application.UserRelationService;
 import org.sangyunpark99.user.application.UserService;
 import org.sangyunpark99.user.application.interfaces.UserRelationRepository;
@@ -24,8 +24,7 @@ public class FakeObjectFactory {
     private static final LikeRepository likeRepository = new FakeLikeRepository();
 
     private static final UserService userService = new UserService(userRepository);
-    private static final UserRelationService userRelationService = new UserRelationService(userService,
-            userRelationRepository);
+    private static final UserRelationService userRelationService = new UserRelationService(userService,userRelationRepository);
     private static final PostService postService = new PostService(postRepository,likeRepository,userService);
     private static final CommentService commentService = new CommentService(commentRepository,userService,postService
             ,likeRepository);

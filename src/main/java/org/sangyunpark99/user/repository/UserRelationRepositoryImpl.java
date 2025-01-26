@@ -27,10 +27,10 @@ public class UserRelationRepositoryImpl implements UserRelationRepository {
     }
 
     @Override
-    @Transactional
     public void save(User user, User targetUser) {
         UserRelationshipEntity entity = new UserRelationshipEntity(user.getId(), targetUser.getId());
         jpaUserRelationRepository.save(entity);
+
         jpaUserRepository.saveAll(List.of(new UserEntity(user), new UserEntity(targetUser))); // 이때 팔로워 수는 갱신되어 있다.
         // 도메인으로 수정하기 때문에 더티체킹이 되지 않는다. 따라서 saveAll을 해준다.
     }
@@ -40,7 +40,9 @@ public class UserRelationRepositoryImpl implements UserRelationRepository {
     public void delete(User user, User targetUser) {
         UserRelationshipEntity entity = jpaUserRelationRepository.findById(new UserRelationIdEntity(user.getId()
                 ,targetUser.getId())).orElseThrow(() -> new IllegalArgumentException());
+
         jpaUserRelationRepository.delete(entity);
+
         jpaUserRepository.saveAll(List.of(new UserEntity(user), new UserEntity(targetUser)));
     }
 }

@@ -1,7 +1,7 @@
 package org.sangyunpark99.post.application;
 
 import org.junit.jupiter.api.Test;
-import org.sangyunpark99.post.application.dto.LikeCommentRequestDtp;
+import org.sangyunpark99.post.application.dto.LikeCommentRequestDto;
 import org.sangyunpark99.post.application.dto.UpdateCommentRequestDto;
 import org.sangyunpark99.post.domain.comment.Comment;
 
@@ -12,7 +12,7 @@ class CommentServiceTest extends PostApplicationTestTemplate {
     @Test
     void givenCommentDto_whenCreateComment_thenReturnComment() {
         //given
-        postService.create(postRequestDto);
+        postService.createPost(postRequestDto);
 
         // when
         Comment savedComment = commentService.createComment(commentRequestDto);
@@ -26,12 +26,14 @@ class CommentServiceTest extends PostApplicationTestTemplate {
     @Test
     void givenCommentDto_whenUpdateComment_thenReturnUpdatedComment() {
         //given
-        postService.create(postRequestDto);
+        postService.createPost(postRequestDto);
         Comment savedComment = commentService.createComment(commentRequestDto);
         String updatedContent = "this is updated content";
 
         // when
-        Comment updatedComment = commentService.updateComment(new UpdateCommentRequestDto(savedComment.getId(), user.getId(), updatedContent));
+        Comment updatedComment =
+                commentService.updateComment(savedComment.getId(), new UpdateCommentRequestDto(user.getId(),
+                updatedContent));
 
         // then
         assertEquals(savedComment.getId(), updatedComment.getId());
@@ -42,11 +44,11 @@ class CommentServiceTest extends PostApplicationTestTemplate {
     @Test
     void givenCreatedComment_whenLikeComment_thenCommentLiked() {
         //given
-        postService.create(postRequestDto);
+        postService.createPost(postRequestDto);
         Comment savedComment = commentService.createComment(commentRequestDto);
 
         // when
-        commentService.likeComment(new LikeCommentRequestDtp(savedComment.getId(), otherUser.getId()));
+        commentService.likeComment(new LikeCommentRequestDto(savedComment.getId(), otherUser.getId()));
 
         // then
         Comment likedComment = commentService.getComments(savedComment.getId());
@@ -56,12 +58,12 @@ class CommentServiceTest extends PostApplicationTestTemplate {
     @Test
     void givenLikedComment_whenUnlikeComment_thenCommentUnliked() {
         //given
-        postService.create(postRequestDto);
+        postService.createPost(postRequestDto);
         Comment savedComment = commentService.createComment(commentRequestDto);
-        commentService.likeComment(new LikeCommentRequestDtp(savedComment.getId(), otherUser.getId()));
+        commentService.likeComment(new LikeCommentRequestDto(savedComment.getId(), otherUser.getId()));
 
         // when
-        commentService.unlikeComment(new LikeCommentRequestDtp(savedComment.getId(), otherUser.getId()));
+        commentService.unlikeComment(new LikeCommentRequestDto(savedComment.getId(), otherUser.getId()));
 
         // then
         Comment unlikedComment = commentService.getComments(savedComment.getId());
@@ -71,12 +73,12 @@ class CommentServiceTest extends PostApplicationTestTemplate {
     @Test
     void givenLikedComment_whenLikeComment_thenCommentLiked() {
         //given
-        postService.create(postRequestDto);
+        postService.createPost(postRequestDto);
         Comment savedComment = commentService.createComment(commentRequestDto);
-        commentService.likeComment(new LikeCommentRequestDtp(savedComment.getId(), otherUser.getId()));
+        commentService.likeComment(new LikeCommentRequestDto(savedComment.getId(), otherUser.getId()));
 
         // when
-        commentService.likeComment(new LikeCommentRequestDtp(savedComment.getId(), otherUser.getId()));
+        commentService.likeComment(new LikeCommentRequestDto(savedComment.getId(), otherUser.getId()));
 
         // then
         Comment likedComment = commentService.getComments(savedComment.getId());
@@ -86,11 +88,11 @@ class CommentServiceTest extends PostApplicationTestTemplate {
     @Test
     void givenUnLikedComment_whenUnlikeComment_thenCommentUnliked() {
         //given
-        postService.create(postRequestDto);
+        postService.createPost(postRequestDto);
         Comment savedComment = commentService.createComment(commentRequestDto);
 
         // when
-        commentService.unlikeComment(new LikeCommentRequestDtp(savedComment.getId(), otherUser.getId()));
+        commentService.unlikeComment(new LikeCommentRequestDto(savedComment.getId(), otherUser.getId()));
 
         // then
         Comment unlikedComment = commentService.getComments(savedComment.getId());

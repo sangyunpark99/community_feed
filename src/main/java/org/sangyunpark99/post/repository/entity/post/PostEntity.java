@@ -1,7 +1,9 @@
 package org.sangyunpark99.post.repository.entity.post;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 import org.sangyunpark99.common.repository.entity.TimeBaseEntity;
 import org.sangyunpark99.post.domain.Like;
 import org.sangyunpark99.post.domain.Post;
@@ -12,6 +14,8 @@ import org.sangyunpark99.user.repository.entity.UserEntity;
 @Entity
 @Table(name = "community_post")
 @NoArgsConstructor
+@DynamicUpdate
+@Getter
 public class PostEntity extends TimeBaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +37,7 @@ public class PostEntity extends TimeBaseEntity {
         this.content = post.getContentText();
         this.likeCount = post.getLikeCount();
         this.author = new UserEntity(post.getAuthor());
-        this.state = state;
+        this.state = post.getState();
     }
 
     public Post toPost() {
@@ -41,6 +45,7 @@ public class PostEntity extends TimeBaseEntity {
                 .id(id)
                 .content(new PostContent(content))
                 .state(state)
+                .author(author.toUser())
                 .likeCount(new Like(likeCount))
                 .build();
     }

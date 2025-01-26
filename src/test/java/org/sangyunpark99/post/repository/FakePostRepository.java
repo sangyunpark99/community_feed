@@ -1,4 +1,4 @@
-package org.sangyunpark99.post.domain.repository;
+package org.sangyunpark99.post.repository;
 
 import org.sangyunpark99.post.application.interfaces.PostRepository;
 import org.sangyunpark99.post.domain.Post;
@@ -27,7 +27,7 @@ public class FakePostRepository implements PostRepository {
     }
 
     @Override
-    public Optional<Post> findById(Long id) {
-        return Optional.ofNullable(store.get(id));
+    public Post findById(Long id) {
+        return store.get(id);
     }
 }

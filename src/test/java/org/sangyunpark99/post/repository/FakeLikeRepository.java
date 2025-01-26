@@ -1,4 +1,4 @@
-package org.sangyunpark99.post.domain.repository;
+package org.sangyunpark99.post.repository;
 
 import org.sangyunpark99.post.application.interfaces.LikeRepository;
 import org.sangyunpark99.post.domain.Post;

@@ -1,6 +1,7 @@
 package org.sangyunpark99.user.repository.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import org.sangyunpark99.common.domain.PositiveIntegerCounter;
@@ -11,6 +12,7 @@ import org.sangyunpark99.user.domain.UserInfo;
 @Entity
 @Table(name = "community_user")
 @NoArgsConstructor
+@Getter
 @DynamicUpdate
 public class UserEntity extends TimeBaseEntity {
 

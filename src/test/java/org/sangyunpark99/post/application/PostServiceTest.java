@@ -12,22 +12,22 @@ class PostServiceTest extends PostApplicationTestTemplate{
     @Test
     void givenPostDto_whenCreatePost_thenReturnPost() {
         // when
-        Post savedPost = postService.create(postRequestDto);
+        Post savedPost = postService.createPost(postRequestDto);
 
         // then
-        Post foundPost = postService.get(savedPost.getId());
+        Post foundPost = postService.getPost(savedPost.getId());
         assertEquals(foundPost, savedPost);
     }
 
     @Test
     void givenPostDto_whenUpdatePost_thenReturnUpdatedPost() {
         // given
-        Post savedPost = postService.create(postRequestDto);
-        UpdatePostRequestDto updateDto = new UpdatePostRequestDto(savedPost.getId(), user.getId(),
+        Post savedPost = postService.createPost(postRequestDto);
+        UpdatePostRequestDto updateDto = new UpdatePostRequestDto(user.getId(),
                 "this is updated content", PostState.PRIVATE);
 
         // when
-        Post updatedPost = postService.update(updateDto);
+        Post updatedPost = postService.updatePost(savedPost.getId(), updateDto);
 
         // then
         assertEquals(savedPost.getId(), updatedPost.getId());
@@ -39,21 +39,21 @@ class PostServiceTest extends PostApplicationTestTemplate{
     @Test
     void givenCreatedPost_whenLikePost_thenPostLiked() {
         // given
-        Post savedPost = postService.create(postRequestDto);
+        Post savedPost = postService.createPost(postRequestDto);
 
         // when
         LikePostRequestDto likeDto = new LikePostRequestDto(savedPost.getId(), otherUser.getId());
         postService.likePost(likeDto);
 
         // then
-        Post likedPost = postService.get(savedPost.getId());
+        Post likedPost = postService.getPost(savedPost.getId());
         assertEquals(1, likedPost.getLikeCount());
     }
 
     @Test
     void givenLikedPost_whenUnlikePost_thenPostUnliked() {
         // given
-        Post savedPost = postService.create(postRequestDto);
+        Post savedPost = postService.createPost(postRequestDto);
         LikePostRequestDto likeDto = new LikePostRequestDto(savedPost.getId(), otherUser.getId());
         postService.likePost(likeDto);
 
@@ -61,14 +61,14 @@ class PostServiceTest extends PostApplicationTestTemplate{
         postService.unlikePost(likeDto);
 
         // then
-        Post unlikedPost = postService.get(savedPost.getId());
+        Post unlikedPost = postService.getPost(savedPost.getId());
         assertEquals(0, unlikedPost.getLikeCount());
     }
 
     @Test
     void givenLikedPost_whenLikePost_thenPostLiked() {
         // given
-        Post savedPost = postService.create(postRequestDto);
+        Post savedPost = postService.createPost(postRequestDto);
         LikePostRequestDto likeDto = new LikePostRequestDto(savedPost.getId(), otherUser.getId());
         postService.likePost(likeDto);
 
@@ -76,14 +76,14 @@ class PostServiceTest extends PostApplicationTestTemplate{
         postService.likePost(likeDto);
 
         // then
-        Post likedPost = postService.get(savedPost.getId());
+        Post likedPost = postService.getPost(savedPost.getId());
         assertEquals(1, likedPost.getLikeCount());
     }
 
     @Test
     void givenUnlikedPost_whenUnlikePost_thenPostUnliked() {
         // given
-        Post savedPost = postService.create(postRequestDto);
+        Post savedPost = postService.createPost(postRequestDto);
         LikePostRequestDto likeDto = new LikePostRequestDto(savedPost.getId(), otherUser.getId());
         postService.likePost(likeDto);
         postService.unlikePost(likeDto);
@@ -92,7 +92,7 @@ class PostServiceTest extends PostApplicationTestTemplate{
         postService.unlikePost(likeDto);
 
         // then
-        Post unlikedPost = postService.get(savedPost.getId());
+        Post unlikedPost = postService.getPost(savedPost.getId());
         assertEquals(0, unlikedPost.getLikeCount());
     }
 
