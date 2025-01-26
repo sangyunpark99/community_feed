@@ -3,6 +3,7 @@ package org.sangyunpark99.post.repository.entity.post;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
 import org.sangyunpark99.common.repository.entity.TimeBaseEntity;
 import org.sangyunpark99.post.domain.Like;
@@ -27,6 +28,9 @@ public class PostEntity extends TimeBaseEntity {
     private PostState state;
 
     private Integer likeCount;
+
+    @ColumnDefault("0")
+    private int commentCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))

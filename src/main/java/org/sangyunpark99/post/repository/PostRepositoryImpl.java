@@ -5,17 +5,17 @@ import org.sangyunpark99.post.application.interfaces.PostRepository;
 import org.sangyunpark99.post.domain.Post;
 import org.sangyunpark99.post.repository.entity.post.PostEntity;
 import org.sangyunpark99.post.repository.jpa.JpaPostRepository;
+import org.sangyunpark99.post.repository.post_queue.UserPostQueueCommentRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @RequiredArgsConstructor
 public class PostRepositoryImpl implements PostRepository {
 
     private final JpaPostRepository jpaPostRepository;
+    private final UserPostQueueCommentRepository userPostQueueCommentRepository;
 
     @Override
-    @Transactional
     public Post save(Post post) {
         PostEntity postEntity = new PostEntity(post);
         if(post.getId() != null) {
@@ -23,6 +23,7 @@ public class PostRepositoryImpl implements PostRepository {
             return post;
         }
         postEntity = jpaPostRepository.save(postEntity);
+        userPostQueueCommentRepository.publishPost(postEntity);
         return postEntity.toPost();
     }
 

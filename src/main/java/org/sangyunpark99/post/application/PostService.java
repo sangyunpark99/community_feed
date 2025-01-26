@@ -24,14 +24,12 @@ public class PostService {
         return postRepository.findById(id);
     }
 
-    @Transactional
     public Post createPost(CreatePostRequestDto dto) {
         User user = userService.getUser(dto.userId());
         Post post = Post.createPost(null, user, dto.content() ,dto.state());
         return postRepository.save(post);
     }
 
-    @Transactional
     public Post updatePost(Long id, UpdatePostRequestDto dto) {
         Post post = getPost(id);
         User user = userService.getUser(dto.userId());
@@ -40,7 +38,6 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    @Transactional
     public void likePost(LikePostRequestDto dto) {
         Post post = getPost(dto.postId());
         User user = userService.getUser(dto.userId());
@@ -53,7 +50,6 @@ public class PostService {
         likeRepository.like(post, user);
     }
 
-    @Transactional
     public void unlikePost(LikePostRequestDto dto) {
         Post post = getPost(dto.postId());
         User user = userService.getUser(dto.userId());

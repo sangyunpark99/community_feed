@@ -32,7 +32,6 @@ public class CommentService {
         return commentRepository.findById(id);
     }
 
-    @Transactional
     public Comment createComment(CreateCommentRequestDto dto) {
         Post post = postService.getPost(dto.postId());
         User user = userService.getUser(dto.userId());
@@ -40,7 +39,6 @@ public class CommentService {
        return commentRepository.save(comment);
     }
 
-    @Transactional
     public Comment updateComment(Long commentId, UpdateCommentRequestDto dto) {
         User user = userService.getUser(dto.userId());
         Comment comment = commentRepository.findById(commentId);
@@ -49,7 +47,6 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    @Transactional
     public void likeComment(LikeCommentRequestDto dto) {
         Comment comment = commentRepository.findById(dto.commentId());
         User user = userService.getUser(dto.userId());
@@ -62,7 +59,6 @@ public class CommentService {
         likeRepository.like(comment, user);
     }
 
-    @Transactional
     public void unlikeComment(LikeCommentRequestDto dto) {
         Comment comment = commentRepository.findById(dto.commentId());
         User user = userService.getUser(dto.userId());

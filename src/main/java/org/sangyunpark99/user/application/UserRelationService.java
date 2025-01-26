@@ -14,7 +14,6 @@ public class UserRelationService {
     private final UserService userService;
     private final UserRelationRepository userRelationRepository;
 
-    @Transactional
     public void follow(FollowUserRequestDto dto) {
         User user = userService.getUser(dto.userId());
         User targetUser = userService.getUser(dto.targetUserId());

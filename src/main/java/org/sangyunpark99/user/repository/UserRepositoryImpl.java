@@ -6,6 +6,7 @@ import org.sangyunpark99.user.domain.User;
 import org.sangyunpark99.user.repository.entity.UserEntity;
 import org.sangyunpark99.user.repository.jpa.JpaUserRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @RequiredArgsConstructor
@@ -14,6 +15,7 @@ public class UserRepositoryImpl implements UserRepository {
     private final JpaUserRepository jpaUserRepository;
 
     @Override
+    @Transactional
     public User save(User user) {
         UserEntity entity = new UserEntity(user);
         entity = jpaUserRepository.save(entity);

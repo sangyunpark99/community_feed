@@ -40,6 +40,7 @@ public class LikeRepositoryImpl implements LikeRepository {
     }
 
     @Override
+    @Transactional
     public void like(Post post, User user) {
         LikeEntity likeEntity = new LikeEntity(post, user);
         entityManager.persist(likeEntity);
@@ -47,6 +48,7 @@ public class LikeRepositoryImpl implements LikeRepository {
     }
 
     @Override
+    @Transactional
     public void unlike(Post post, User user) {
         LikeEntity likeEntity = new LikeEntity(post, user);
         jpaLikeRepository.deleteById(likeEntity.getId());
@@ -54,6 +56,7 @@ public class LikeRepositoryImpl implements LikeRepository {
     }
 
     @Override
+    @Transactional
     public void like(Comment comment, User user) {
         LikeEntity likeEntity = new LikeEntity(comment, user);
         entityManager.persist(likeEntity);
@@ -61,6 +64,7 @@ public class LikeRepositoryImpl implements LikeRepository {
     }
 
     @Override
+    @Transactional
     public void unlike(Comment comment, User user) {
         LikeEntity likeEntity = new LikeEntity(comment, user);
         jpaLikeRepository.deleteById(likeEntity.getId());
