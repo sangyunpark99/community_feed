@@ -5,7 +5,6 @@ import org.sangyunpark99.post.application.interfaces.CommentRepository;
 import org.sangyunpark99.post.domain.Post;
 import org.sangyunpark99.post.domain.comment.Comment;
 import org.sangyunpark99.post.repository.entity.comment.CommentEntity;
-import org.sangyunpark99.post.repository.entity.post.PostEntity;
 import org.sangyunpark99.post.repository.jpa.JpaCommentRepository;
 import org.sangyunpark99.post.repository.jpa.JpaPostRepository;
 import org.springframework.stereotype.Repository;
