@@ -10,7 +10,6 @@ import org.sangyunpark99.post.domain.comment.Comment;
 import org.sangyunpark99.user.application.UserService;
 import org.sangyunpark99.user.domain.User;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CommentService {
