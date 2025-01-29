@@ -30,7 +30,7 @@ public class DatabaseCleanUp implements InitializingBean {
                 .toList();
 
         // 복합키로 지정이 되는 테이블을 키값을 따로 지정해주어야 합니다.
-        notGeneratedIdTableNames = List.of("community_user_relation", "community_like");
+        notGeneratedIdTableNames = List.of("community_user_auth","community_user_relation", "community_like");
     }
 
     @Transactional

@@ -30,6 +30,10 @@ public class User {
         this.followingCount = new PositiveIntegerCounter();
     }
 
+    public User(String name, String profileImageUrl) {
+        this(null, new UserInfo(name, profileImageUrl));
+    }
+
     public Long getId() {
         return id;
     }

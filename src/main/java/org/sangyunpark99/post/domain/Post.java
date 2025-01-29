@@ -21,10 +21,6 @@ public class Post {
         return new Post(id, author, new PostContent(text), state);
     }
 
-//    public static Post createDefaultPost(Long id, User author, String text) {
-//        return new Post(id, author, new PostContent(text), PostState.PUBLIC);
-//    }
-
     public Post(Long id, User author, Content content) {
         this(id, author, content, PostState.PUBLIC);
     }

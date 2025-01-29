@@ -3,6 +3,7 @@ package org.sangyunpark99.acceptance.steps;
 import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
+import org.sangyunpark99.auth.application.dto.CreateUserAuthRequestDto;
 import org.sangyunpark99.user.application.dto.request.CreateUserRequestDto;
 import org.sangyunpark99.user.application.dto.response.FollowUserRequestDto;
 import org.springframework.http.MediaType;
@@ -32,5 +33,17 @@ public class UserAcceptanceSteps {
                 .post(FOLLOW_USER)
                 .then()
                 .extract();
+    }
+
+    public static Integer registerUser(CreateUserAuthRequestDto dto) {
+        return RestAssured
+                .given()
+                .body(dto)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .post("/signup/register")
+                .then()
+                .extract()
+                .jsonPath().get("code");
     }
 }

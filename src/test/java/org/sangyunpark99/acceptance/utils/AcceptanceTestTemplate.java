@@ -14,13 +14,27 @@ public class AcceptanceTestTemplate {
     private DatabaseCleanUp cleanUp;
 
     @Autowired
-    private DataLoader dataLoader;
+    private DataLoader loader;
 
     @BeforeEach
     public void init() {
         cleanUp.execute();
-        dataLoader.loadData();
+        loader.loadData();
     }
 
+    protected void cleanUp() {
+        cleanUp.execute();
+    }
 
+    protected String getEmailToken(String email) {
+        return loader.getEmailToken(email);
+    }
+
+    protected boolean isEmailVerified(String email) {
+        return loader.isEmailVerified(email);
+    }
+
+    protected Long getUserId(String email) {
+        return loader.getUser(email);
+    }
 }
