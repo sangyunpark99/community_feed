@@ -11,7 +11,7 @@ import static org.sangyunpark99.acceptance.steps.SignUpAcceptanceSteps.requestSe
 import static org.sangyunpark99.acceptance.steps.SignUpAcceptanceSteps.requestVerifyEmail;
 import static org.sangyunpark99.acceptance.steps.UserAcceptanceSteps.registerUser;
 
-public class SignUpAcceptanceTest extends AcceptanceTestTemplate {
+class SignUpAcceptanceTest extends AcceptanceTestTemplate {
 
     private final String email = "email@email.com";
 

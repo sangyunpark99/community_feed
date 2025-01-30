@@ -9,7 +9,7 @@ import org.sangyunpark99.auth.domain.Email;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class EmailTest {
+class EmailTest {
 
     @ParameterizedTest
     @NullAndEmptySource

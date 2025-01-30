@@ -5,7 +5,7 @@ import org.sangyunpark99.auth.domain.RandomTokenGenerator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RandomTokenGeneratorTest {
+class RandomTokenGeneratorTest {
 
     @Test
     void whenGenerateToken_thenReturnTokenWithCorrectLength() {

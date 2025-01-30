@@ -2,11 +2,13 @@ package org.sangyunpark99.auth.application;
 
 import lombok.RequiredArgsConstructor;
 import org.sangyunpark99.auth.application.dto.CreateUserAuthRequestDto;
+import org.sangyunpark99.auth.application.dto.LoginRequestDto;
+import org.sangyunpark99.auth.application.dto.UserAccessTokenResponseDto;
 import org.sangyunpark99.auth.application.interfaces.EmailVerificationRepository;
 import org.sangyunpark99.auth.application.interfaces.UserAuthRepository;
 import org.sangyunpark99.auth.domain.Email;
+import org.sangyunpark99.auth.domain.TokenProvider;
 import org.sangyunpark99.auth.domain.UserAuth;
-import org.sangyunpark99.auth.repository.entity.UserAuthEntity;
 import org.sangyunpark99.user.domain.User;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,7 @@ public class AuthService {
 
     private final UserAuthRepository userAuthRepository;
     private final EmailVerificationRepository emailVerificationRepository;
+    private final TokenProvider tokenProvider;
 
     public Long registerUser(CreateUserAuthRequestDto dto) {
 
@@ -30,5 +33,11 @@ public class AuthService {
         userAuth = userAuthRepository.registerUser(userAuth, user);
 
         return userAuth.getUserId();
+    }
+
+    public UserAccessTokenResponseDto login(LoginRequestDto dto) {
+        UserAuth userAuth = userAuthRepository.loginUser(dto.email(), dto.password());
+        String token = tokenProvider.createToken(userAuth.getUserId(), userAuth.getUserRole());
+        return new UserAccessTokenResponseDto(token);
     }
 }
