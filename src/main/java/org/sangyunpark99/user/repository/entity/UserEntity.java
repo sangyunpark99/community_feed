@@ -8,6 +8,9 @@ import org.sangyunpark99.common.domain.PositiveIntegerCounter;
 import org.sangyunpark99.common.repository.entity.TimeBaseEntity;
 import org.sangyunpark99.user.domain.User;
 import org.sangyunpark99.user.domain.UserInfo;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "community_user")
@@ -26,6 +29,10 @@ public class UserEntity extends TimeBaseEntity {
     private Integer followingCount;
 
     private Integer followerCount;
+
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDate regDt;
 
     public UserEntity(User user) {
         this.id = user.getId();
