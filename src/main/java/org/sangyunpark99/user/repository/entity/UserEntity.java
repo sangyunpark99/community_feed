@@ -11,6 +11,7 @@ import org.sangyunpark99.user.domain.UserInfo;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "community_user")

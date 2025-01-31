@@ -3,7 +3,7 @@ package org.sangyunpark99.admin.repository;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
-import org.sangyunpark99.admin.ui.dto.GetDailyRegisterUserResponseDto;
+import org.sangyunpark99.admin.ui.dto.users.GetDailyRegisterUserResponseDto;
 import org.sangyunpark99.admin.ui.query.UserStatsQueryRepository;
 import org.sangyunpark99.common.TimeCalculator;
 import org.sangyunpark99.user.repository.entity.QUserEntity;
