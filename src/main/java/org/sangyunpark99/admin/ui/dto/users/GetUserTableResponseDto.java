@@ -3,7 +3,7 @@ package org.sangyunpark99.admin.ui.dto.users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.sangyunpark99.common.TimeCalculator;
+import org.sangyunpark99.common.utils.TimeCalculator;
 
 import java.time.LocalDateTime;
 

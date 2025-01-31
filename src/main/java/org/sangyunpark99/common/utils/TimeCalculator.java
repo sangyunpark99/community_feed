@@ -1,4 +1,4 @@
-package org.sangyunpark99.common;
+package org.sangyunpark99.common.utils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

@@ -1,6 +1,7 @@
 package org.sangyunpark99.post.ui;
 
 import lombok.RequiredArgsConstructor;
+import org.sangyunpark99.common.idempotency.Idempotent;
 import org.sangyunpark99.common.ui.Response;
 import org.sangyunpark99.post.application.PostService;
 import org.sangyunpark99.post.application.dto.CreatePostRequestDto;
@@ -28,6 +29,7 @@ public class PostController {
         return Response.ok(post.getId());
     }
 
+    @Idempotent
     @PostMapping("/like")
     public Response<Void> likePost(@RequestBody LikePostRequestDto dto) {
         postService.likePost(dto);
