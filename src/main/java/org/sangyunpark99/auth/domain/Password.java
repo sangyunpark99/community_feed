@@ -26,7 +26,7 @@ public class Password {
     }
 
     public boolean matchPassword(String password) {
-        return encryptedPassword.equals(SHA256.encrypt(password));
+        return encryptedPassword.equals(password);
     }
 
     public String getEncryptedPassword() {

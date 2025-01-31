@@ -32,6 +32,9 @@ dependencies {
     implementation 'org.projectlombok:lombok'
     annotationProcessor("org.projectlombok:lombok")
 
+    //firebase
+    implementation 'com.google.firebase:firebase-admin:9.4.3'
+
     // JWT 토큰
     implementation("io.jsonwebtoken:jjwt-api:0.12.6")
     implementation("io.jsonwebtoken:jjwt-impl:0.12.6")

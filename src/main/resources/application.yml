@@ -14,5 +14,7 @@ spring:
         format_sql: true
       open-in-view: false
 
+fcm:
+  certification: firebase-admin.json
 
 secret-key : secretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskeysecretkeythiskey
