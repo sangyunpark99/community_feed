@@ -7,6 +7,7 @@ import org.sangyunpark99.admin.ui.dto.users.GetDailyRegisterUserResponseDto;
 import org.sangyunpark99.admin.ui.query.UserStatsQueryRepository;
 import org.sangyunpark99.common.TimeCalculator;
 import org.sangyunpark99.user.repository.entity.QUserEntity;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
